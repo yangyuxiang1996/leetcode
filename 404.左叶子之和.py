@@ -18,6 +18,30 @@ class Solution(object):
         """
         :type root: TreeNode
         :rtype: int
+        #层次遍历
+        """
+        if not root:
+            return 0
+        stack = []
+        stack.append(root)
+        res = 0
+        while stack:
+            cur = stack.pop(0)
+            if cur.left and (not cur.left.left and not cur.left.right):
+                # 该节点为左节点
+                res += cur.left.val
+            if cur.left:
+                stack.append(cur.left)
+            if cur.right:
+                stack.append(cur.right)
+
+        return res
+
+    def sumOfLeftLeaves1(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        #递归解法
         """
         if not root:
             return 0
@@ -28,12 +52,13 @@ class Solution(object):
                 return 0
 
             # 递归
-            res += helper(root.left, res)
-            res += helper(root.right, res)
+            leftv = helper(root.left, res)
+            rightv = helper(root.right, res)
+            midv = 0
             if root and root.left and (not root.left.left and not root.left.right):
-                res += root.left.val
+                midv = root.left.val
             
-            return res
+            return midv + leftv + rightv
         
         res = helper(root, 0)
 
