@@ -14,6 +14,7 @@
 class Solution(object):
     def __init__(self):
         self.res = float('inf')
+        self.pre = None
 
     def getMinimumDifference1(self, root):
         """
@@ -76,6 +77,26 @@ class Solution(object):
             pre = cur
             cur = cur.right
         return self.res
+
+    def getMinimumDifference(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        第4种方法，递归，采用指针保存前一个节点
+        """
+        def helper(root):
+            if not root:
+                return
+            
+            self.getMinimumDifference(root.left)
+            if self.pre:
+                self.res = min(self.res, abs(root.val - self.pre.val))
+            self.pre = root
+            self.getMinimumDifference(root.right)
+        
+        helper(root)
+        return self.res
+
 
 
 
