@@ -23,7 +23,7 @@ import java.util.Stack;
  * }
  */
 class Solution {
-    public TreeNode insertIntoBST0(TreeNode root, int val) {
+    public TreeNode insertIntoBST(TreeNode root, int val) {
         if (root == null) {
             return new TreeNode(val);
         }
@@ -46,7 +46,7 @@ class Solution {
         return newRoot;
     }
 
-    public TreeNode insertIntoBST(TreeNode root, int val) {
+    public TreeNode insertIntoBST1(TreeNode root, int val) {
         if (root == null) {
             return new TreeNode(val);
         }
