@@ -13,15 +13,19 @@ class ListNode(object):
 
 
 class Solution(object):
-    def reverse(self, head, tail):
-        prev = tail.next
-        p = head
-        while prev != tail:
-            nex = p.next
-            p.next = prev
-            prev = p
-            p = nex
-        return tail, head
+    def reverse(self, a, b):
+        # 首先定义反转节点[a, b)之间节点的函数
+        pre = None
+        cur = a
+        while cur != b:
+            tmp = cur.next
+            cur.next = pre
+            pre = cur
+            cur = tmp
+        
+        return pre
+
+
 
     def reverseKGroup(self, head, k):
         """
@@ -29,30 +33,17 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        if k == 1:
+        if not head:
             return head
-        
-        hair = ListNode(0)
-        hair.next = head
-        pre = hair
+        a, b = head, head
+        for i in range(k):
+            if b is None:
+                return head
+            b = b.next
 
-        while head:
-            tail = pre
-            for i in range(k):
-                tail = tail.next
-                if tail == None:
-                    return hair.next
-            nex = tail.next
-            head, tail = self.reverse(head, tail)
-            tail.next = nex
-            pre.next = head
-
-            pre = tail
-            head = tail.next
-
-        return hair.next
-
-        
+        newh = self.reverse(a, b)
+        a.next = self.reverseKGroup(b, k)
+        return newh       
         
 
         

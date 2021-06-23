@@ -5,7 +5,7 @@ Description:
 Author: yangyuxiang
 Date: 2021-04-22 07:56:50
 LastEditors: yangyuxiang
-LastEditTime: 2021-05-14 08:20:23
+LastEditTime: 2021-06-23 08:09:02
 FilePath: /leetcode/1.两数之和.py
 '''
 #
@@ -22,22 +22,18 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        tmp = {}
-        for i, num in enumerate(nums):
-            if num not in tmp:
-                tmp[target-num] = i
+        m = {}
+        for i in range(len(nums)):
+            # if nums[i] in m:
+            #     return [m[nums[i]], i]
+            # else:
+            #     m[target-nums[i]] = i
+            
+            if target-nums[i] in m:
+                return [m[target-nums[i]], i]
             else:
-                return [tmp[num], i]
-        # tmp = {}
-        # for i in range(len(nums)):
-        #     tmp[nums[i]] = i
-
-        # for i in range(len(nums)):
-        #     other = target - nums[i]
-        #     if other in tmp and tmp[other] != i:
-        #         return [i, tmp[other]]
-
-        # return [-1, -1]                
+                m[nums[i]] = i
+                
 
 # @lc code=end
 
