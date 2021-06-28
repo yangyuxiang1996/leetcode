@@ -5,7 +5,7 @@ Description:  leetcode
 Author: yangyuxiang
 Date: 2021-05-13 10:23:48
 LastEditors: yangyuxiang
-LastEditTime: 2021-05-24 07:37:29
+LastEditTime: 2021-06-28 06:54:02
 FilePath: /leetcode/22.括号生成.py
 '''
 
@@ -46,8 +46,6 @@ class Solution(object):
         """
         if n == 0:
             return []
-        if n == 1:
-            return ['()']
 
         trace = []
         self.backtrace(n, n, trace)
