@@ -5,13 +5,13 @@
  */
 
 // @lc code=start
-class Solution {
+class FindMedianSortedArrays {
     
     public static void main(String[] args) {
         int[] nums1 = {1,3};
         int[] nums2 = {2};
 
-        double res = new Solution().findMedianSortedArrays(nums1, nums2);
+        double res = new FindMedianSortedArrays().findMedianSortedArrays(nums1, nums2);
         System.out.println(res);
     }
 

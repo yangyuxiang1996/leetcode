@@ -13,7 +13,7 @@
  */
 
 // @lc code=start
-class Solution {
+class LongestCommonSubsequence {
     public int longestCommonSubsequence(String text1, String text2) {
         if (text1.equals("") || text2.equals("")){
             return 0;

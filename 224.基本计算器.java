@@ -15,7 +15,7 @@ import java.util.Stack;
  */
 
 // @lc code=start
-class Solution {
+class Calculate {
     public int calculate(String s) {
         String S = s;
         return calcu(S);

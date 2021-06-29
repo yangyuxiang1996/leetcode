@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class Permute {
     
     List<List<Integer>> paths = new LinkedList<>();
     

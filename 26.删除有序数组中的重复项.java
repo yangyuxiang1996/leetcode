@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-class Solution {
+class removeDuplicates {
     public int removeDuplicates(int[] nums) {
         int slow = 1;
         int fast = 1;

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -15,7 +17,7 @@ import java.util.List;
  */
 
 // @lc code=start
-class Solution {
+class SolveNQueens {
     
     List<List<String>> result = new ArrayList<>();
     

@@ -22,7 +22,7 @@ import java.util.LinkedList;
  *     }
  * }
  */
-class Solution {
+class CountNodes {
     // public class TreeNode {
     //     int val;
     //     TreeNode left;

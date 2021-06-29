@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-class Solution {
+class CoinChange {
     public int coinChange(int[] coins, int amount) {
         // int[] memo = new int[amount+1];
         // return dp(coins, amount, memo);

@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
@@ -8,7 +9,7 @@ import java.util.Stack;
  */
 
 // @lc code=start
-class Solution {
+class IsValid {
     public boolean isValid(String s) {
         if (s.isEmpty()) {
             return false;

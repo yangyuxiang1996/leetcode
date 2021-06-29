@@ -20,7 +20,7 @@
  *     }
  * }
  */
-class Solution {
+class DeleteNode {
     public TreeNode deleteNode(TreeNode root, int key) {
         if (root == null) {
             return null;

@@ -15,7 +15,7 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+class ReverseList {
     public ListNode reverseList0(ListNode head) {
         // 递归
         if (head == null || head.next == null) return head;

@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-class Solution {
+class trap1 {
     public int trap1(int[] height) {
         // 双数组
         if (height.length == 0) {

@@ -16,7 +16,7 @@ import java.util.Map;
  */
 
 // @lc code=start
-class Solution {
+class LengthOfLongestSubstring {
     public int lengthOfLongestSubstring(String s) {
         
         Map<Character, Integer> window = new HashMap<Character, Integer>();

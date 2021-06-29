@@ -23,7 +23,7 @@ import java.util.Stack;
  *     }
  * }
  */
-class Solution {
+class IsValidBST {
     long min = Long.MIN_VALUE;
     public boolean isValidBST(TreeNode root) {
         // 递归，中序遍历

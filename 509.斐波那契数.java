@@ -15,9 +15,9 @@
  */
 
 // @lc code=start
-class Solution {
+class Fib {
     public static void main(String[] args) {
-        System.out.println(new Solution().fib(10));    
+        System.out.println(new Fib().fib(10));
     }
     public int fib(int n) {
         // int[] memo = new int[n+1];

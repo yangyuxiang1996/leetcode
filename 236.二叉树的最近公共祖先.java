@@ -14,7 +14,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-class Solution {
+class LowestCommonAncestor {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null) {
             return null;

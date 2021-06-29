@@ -15,7 +15,7 @@ import java.util.Vector;
  */
 
 // @lc code=start
-class Solution {
+class LongestPalindromeSubseq {
     public int longestPalindromeSubseq(String s) {
         if (s.length() <= 1) { 
             return s.length(); 

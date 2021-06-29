@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.Map;
 
 /*
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 
 // @lc code=start
-class Solution {
+class MinWindow {
     public String minWindow(String s, String t) {
         if(s==null||s.isEmpty()||t==null||t.isEmpty()) return "";
         int left = 0;

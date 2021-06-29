@@ -18,7 +18,7 @@ import java.util.Queue;
  */
 
 // @lc code=start
-class Solution {
+class OpenLock {
     public String plusOne(String cur, int i) {
         char[] ch = cur.toCharArray();
         if (ch[i] == '9') {
