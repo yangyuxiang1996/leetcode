@@ -23,20 +23,20 @@ class Combine {
      */
     private void combineHelper(int n, int k, int startIndex, LinkedList<Integer> path){
         //终止条件
-        if (k==0){
+        if (k==path.size()){
             result.add(new ArrayList<>(path));
             return;
         }
-        for (int i = startIndex; i <= n; i++){
+        for (int i = startIndex; i <= n-(k-path.size())+1; i++){
             path.addLast(i);
-            combineHelper(n, k-1, i + 1, path);
+            combineHelper(n, k, i + 1, path);
             path.removeLast();
         }
     }
 
     public static void main(String[] args) {
         int n = 4;
-        int k = 2;
+        int k = 4;
         System.out.println(new Combine().combine(n,k));
     }
 }
