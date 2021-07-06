@@ -5,7 +5,7 @@ Description:
 Author: yangyuxiang
 Date: 2021-04-21 10:04:45
 LastEditors: yangyuxiang
-LastEditTime: 2021-04-21 12:24:19
+LastEditTime: 2021-07-05 07:06:35
 FilePath: /leetcode/51.n-皇后.py
 '''
 #
@@ -48,23 +48,35 @@ class Solution(object):
                     return False
             
             # 右上
-            j = col
-            for i in range(row-1, -1, -1):
-                j += 1
-                if j >= len(board):
-                    continue
+            # j = col
+            # for i in range(row-1, -1, -1):
+            #     j += 1
+            #     if j >= len(board):
+            #         continue
+            #     if board[i][j] == "Q":
+            #         return False
+            i, j = row-1, col+1
+            while i >= 0 and j <= len(board)-1:
                 if board[i][j] == "Q":
                     return False
+                i -= 1
+                j += 1
             
             # 左上
-            z = col
-            for i in range(row-1, -1, -1):
-                z -= 1
-                if z < 0:
-                    continue
-                if board[i][z] == "Q":
+            # z = col
+            # for i in range(row-1, -1, -1):
+            #     z -= 1
+            #     if z < 0:
+            #         continue
+            #     if board[i][z] == "Q":
+            #         return False
+            i, j = row-1, col-1
+            while i >= 0 and j >= 0:
+                if board[i][j] == "Q":
                     return False
-
+                i -= 1
+                j -= 1
+                
             return True
 
         backtrack(board, row=0)

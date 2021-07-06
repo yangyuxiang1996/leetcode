@@ -16,21 +16,21 @@ class Solution(object):
             return []
         
         self.res = []
-        def backtrace(candidates, path, target, tmp):
+        def backtrace(start, path, target, tmp):
             if tmp > target:
                 return
             if tmp == target:
                 self.res.append(path[:])
             
-            for i in range(len(candidates)):
+            for i in range(start, len(candidates)):
                 candidate = candidates[i]
                 tmp += candidate
                 path.append(candidate)
-                backtrace(candidates[i:], path, target, tmp)
+                backtrace(i, path, target, tmp)
                 tmp -= candidate
                 path.pop()
 
-        backtrace(candidates, [], target, 0)
+        backtrace(0, [], target, 0)
         return self.res
 
 # @lc code=end

@@ -5,7 +5,7 @@ Description:
 Author: yangyuxiang
 Date: 2021-05-23 22:11:07
 LastEditors: yangyuxiang
-LastEditTime: 2021-05-23 23:11:51
+LastEditTime: 2021-07-06 08:55:13
 FilePath: /leetcode/45.跳跃游戏-ii.py
 '''
 
@@ -45,7 +45,7 @@ class Solution(object):
         解法:动态规划
         """
         n = len(nums)
-        memo = [n for _ in range(n)]
+        memo = [n for _ in range(n)]  # 最多跳n-1次，这里置为n，相当于float('inf')
 
         def dp(nums, p):
             if p >= len(nums) - 1:
@@ -64,5 +64,5 @@ class Solution(object):
 
 if __name__ == '__main__':
     nums = [2, 3, 1, 1, 4]
-    print(Solution().jump(nums))
+    print(Solution().jump1(nums))
 # @lc code=end

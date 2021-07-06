@@ -13,8 +13,8 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         self.res = []
-        candidates = sorted(candidates)
-        demo = [False] * len(candidates)
+        candidates = sorted(candidates)  # 先排序，使得相同的数挨在一起
+        demo = [False] * len(candidates)  # 第一种去重方法，定义一个全局数组保存当前元素是否使用过
 
         def backtrace(start, path, target, result):
             if result > target:
@@ -22,9 +22,13 @@ class Solution(object):
             if result == target:
                 self.res.append(path[:])
             
+            repeat = []  # 第二种去重方法，在每一层初始化一个数组，记录当前层出现过的元素
             for i in range(start, len(candidates)):
-                if i > 0 and candidates[i] == candidates[i-1] and demo[i-1] == False:
+                # if i > 0 and candidates[i] == candidates[i-1] and demo[i-1] == False:  # 树层重
+                #     continue
+                if candidates[i] in repeat:
                     continue
+                repeat.append(candidates[i])
                 result += candidates[i]
                 path.append(candidates[i])
                 demo[i] = True

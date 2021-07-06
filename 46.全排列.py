@@ -5,7 +5,7 @@ Description:
 Author: yangyuxiang
 Date: 2021-04-20 22:48:13
 LastEditors: yangyuxiang
-LastEditTime: 2021-04-20 23:11:00
+LastEditTime: 2021-07-03 23:18:35
 FilePath: /leetcode/46.全排列.py
 '''
 #
@@ -22,19 +22,19 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         paths = []
+        visited = [False] * len(nums)
 
-        def backtrack(nums, path):
+        def backtrace(path):
             if len(path) == len(nums):
                 paths.append(path[:])
-                return
-            for num in nums:
-                if num in path:
-                    continue
-                path.append(num)
-                backtrack(nums, path)
-                path.remove(num)
-
-        backtrack(nums, [])
+            for i in range(len(nums)):
+                if visited[i] == False:
+                    path.append(nums[i])
+                    visited[i] = True
+                    backtrace(path)
+                    path.pop()
+                    visited[i] = False
+        backtrace([])
         return paths
 
 if __name__ == '__main__':

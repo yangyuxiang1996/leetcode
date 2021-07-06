@@ -19,7 +19,7 @@ class Solution(object):
         self.res = []
 
         def backtrace(n, k, start, path):
-            if len(path) == k:
+            if len(path) == k:  # 终止条件
                 if sum(path) != n:
                     return
                 else:
