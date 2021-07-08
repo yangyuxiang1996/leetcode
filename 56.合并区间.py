@@ -5,7 +5,7 @@ Description:
 Author: yangyuxiang
 Date: 2021-05-24 08:33:13
 LastEditors: yangyuxiang
-LastEditTime: 2021-05-24 08:58:11
+LastEditTime: 2021-07-08 23:32:57
 FilePath: /leetcode/56.合并区间.py
 '''
 
@@ -26,18 +26,38 @@ class Solution(object):
         n = len(intervals)
         if n <= 1:
             return intervals
+        
+        # 按照左边界从小到大排序, 每次需要判断是否重叠，如果重叠则要选择较大的右边界
+        intervals = sorted(intervals, key=lambda x: x[0])
+        stack = []
+        for i in range(0, len(intervals)):
+            start = intervals[i][0]
+            if stack and stack[-1][1] >= start:
+                stack[-1][1] = max(stack[-1][1], intervals[i][1])
+            else:
+                stack.append([start, intervals[i][1]])
 
+        return stack
+
+        
+    def merge0(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        n = len(intervals)
+        if n <= 1:
+            return intervals
+
+        # 按照右边界从小到大排序, 每次需要判断是否重叠，如果重叠则要选择较小的左边界
         intervals = sorted(intervals, key=lambda x: x[1])
         stack = []
-        stack.append(intervals[0])
-        for i in range(1, n):
+        for i in range(0, len(intervals)):
             start = intervals[i][0]
-            while stack and stack[-1][1] >= start:
+            while stack and stack[-1][1] >= intervals[i][0]:
                 start = min(stack[-1][0], intervals[i][0])
                 stack.pop()
             stack.append([start, intervals[i][1]])
-            # stack.append(intervals[i])
-
         return stack
 
 
