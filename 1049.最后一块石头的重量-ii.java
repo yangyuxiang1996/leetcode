@@ -24,6 +24,26 @@ class Solution {
         }
 
         return sum - dp[target] - dp[target];
+    }
+
+    public int lastStoneWeightII1(int[] stones) {
+        int sum = 0;
+        for (int i = 0; i < stones.length; i++) {
+            sum += stones[i];
+        }
+        int target = sum / 2;
+
+        int[][] dp = new int[stones.length+1][target+1];
+        for (int i = 1; i < stones.length+1; i++) {
+            for (int j = 0; j < target+1; j++) {
+                if (j - stones[i-1] >= 0) {
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-stones[i-1]] + stones[i-1]);
+                } else {
+                    dp[i][j] = dp[i-1][j];
+                }
+            }
+        }
+        return sum - 2 * dp[stones.length][target];
 
     }
 }

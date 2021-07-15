@@ -4,7 +4,7 @@
 Author: yangyuxiang
 Date: 2021-07-13 11:03:32
 LastEditors: yangyuxiang
-LastEditTime: 2021-07-13 14:26:26
+LastEditTime: 2021-07-15 08:55:50
 FilePath: /leetcode/0.01背包.py
 Description: 
 '''
@@ -27,22 +27,23 @@ class Solution:
         时间复杂度：O(NM), 空间复杂度O(NM)
         '''
         # 定义dp数组
-        dp = [[0] * (maxWeight + 1) for _ in range(len(weights))]
+        dp = [[0] * (maxWeight + 1) for _ in range(len(weights)+1)]
         # 初始化dp数组
-        for i in range(len(weights)):
-            dp[i][0] = 0  # 背包容量为0时，最大价值为0、
-        for j in range(weights[0], maxWeight+1):
-            dp[0][j] = values[0]  # 只有当当前背包容量大于第0个物品的重量时，背包才能放下东西
+        # for i in range(len(weights)):
+        #     dp[i][0] = 0  # 背包容量为0时，最大价值为0、
+        # for j in range(weights[0], maxWeight+1):
+        #     dp[0][j] = values[0]  # 只有当当前背包容量大于第0个物品的重量时，背包才能放下东西
 
         # 递推
-        for i in range(1, len(weights)):
-            for j in range(1, maxWeight+1):
-                if j - weights[i] >= 0:
-                    dp[i][j] = max(dp[i-1][j], dp[i-1][j-weights[i]]+values[i])
+        for i in range(1, len(weights)+1):
+            for j in range(0, maxWeight+1):
+                if j - weights[i-1] >= 0:
+                    dp[i][j] = max(dp[i-1][j], dp[i-1][j-weights[i-1]]+values[i-1])
                 else:
                     dp[i][j] = dp[i-1][j]
 
-            print(dp[i])        
+            print(dp[i-1])
+        print(dp[i-1])    
         return dp[-1][-1]
 
     def findMaxValue1(self, weights, values, maxWeight):
@@ -67,9 +68,9 @@ class Solution:
 
 
 if __name__ == '__main__':
-    weights = [1,2,3,4,5]
-    values = [10,30,30,60,50]
-    maxWeight = 7
-    print(Solution().findMaxValue1(weights, values, maxWeight))
+    weights = [1,3,4]
+    values = [15,20,30]
+    maxWeight = 4
+    print(Solution().findMaxValue0(weights, values, maxWeight))
     
                 

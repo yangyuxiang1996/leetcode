@@ -5,7 +5,7 @@ Description:
 Author: yangyuxiang
 Date: 2021-05-04 21:15:55
 LastEditors: yangyuxiang
-LastEditTime: 2021-05-04 22:13:10
+LastEditTime: 2021-07-15 08:57:01
 FilePath: /leetcode/494.目标和.py
 '''
 #
@@ -60,10 +60,11 @@ class Solution(object):
         def subset(nums, sum):
             n = len(nums)
             dp = [[0] * (sum + 1) for _ in range(n+1)]
-            for i in range(n + 1):
+            for i in range(n+1):
                 dp[i][0] = 1
             
-            for i in range(1, n + 1):
+            
+            for i in range(1, n+1):
                 for j in range(0, sum+1):
                     if j - nums[i-1] >= 0:
                         dp[i][j] = dp[i-1][j] + dp[i-1][j-nums[i-1]]
@@ -79,8 +80,8 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    nums = [7,46,36,49,5,34,25,39,41,38,49,47,17,11,1,41,7,16,23,13]
-    target = 3
+    nums = [0,0,0,0,0,0,0,0,1]
+    target = 1
     print(Solution().findTargetSumWays(nums, target))
         
 # @lc code=end
