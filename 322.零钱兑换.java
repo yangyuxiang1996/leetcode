@@ -5,11 +5,29 @@
  */
 
 // @lc code=start
-class CoinChange {
+class Solution {
     public int coinChange(int[] coins, int amount) {
-        // int[] memo = new int[amount+1];
-        // return dp(coins, amount, memo);
-        return helper(coins, amount);
+        // 完全背包问题
+        int[] dp = new int[amount+1];
+        for (int i=1; i < amount+1; i++){
+            dp[i] = amount+1;
+        }
+        dp[0] = 0;
+
+        for (int i=0; i < coins.length; i++){
+            for (int j=1; j < amount+1; j++){
+                if (j - coins[i] >= 0){
+                    dp[j] = Math.min(dp[j], dp[j-coins[i]]+1);
+                }
+            }
+        }
+        return dp[amount] != amount+1 ? dp[amount] : -1;
+        
+    }
+
+    public int coinChange0(int[] coins, int amount) {
+        int[] memo = new int[amount+1];
+        return dp(coins, amount, memo);
         
     }
     public int dp(int[] coins, int amount, int[] memo) {
@@ -29,21 +47,6 @@ class CoinChange {
             memo[amount] = -1;
         }
         return memo[amount];
-    }
-
-    public int helper(int[] coins, int amount) {
-        int[] dp = new int[amount+1];
-        for (int i=0; i<dp.length; i++) {
-            dp[i] = amount + 1;
-        }
-        dp[0]=0;
-        for (int i=0; i <dp.length; i++) {
-            for (int coin: coins) {
-                if (i - coin < 0) continue;
-                dp[i] = Math.min(dp[i], dp[i-coin]+1);
-            }
-        }
-        return (dp[amount] != amount + 1) ? dp[amount] : -1;
     }
         
 }

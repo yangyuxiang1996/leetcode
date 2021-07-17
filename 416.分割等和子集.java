@@ -60,18 +60,25 @@ class Solution {
         int target = sum / 2;
         // 定义一维dp数组
         int[] dp = new int[target+1];
-        dp[0] = 1;
+        // dp[0] = 1;
+        // for (int i = 0; i < nums.length; i++) {
+        //     for (int j = target; j > 0; j--) {
+        //         if (j - nums[i] >= 0) {
+        //             if (dp[j] == 1 || dp[j - nums[i]] == 1) {
+        //                 dp[j] = 1;
+        //             }
+        //         }
+        //     }
+        // }
+
+        // return dp[target] == 1 ? true : false;
+
         for (int i = 0; i < nums.length; i++) {
-            for (int j = target; j > 0; j--) {
-                if (j - nums[i] >= 0) {
-                    if (dp[j] == 1 || dp[j - nums[i]] == 1) {
-                        dp[j] = 1;
-                    }
-                }
+            for (int j = target; j >= nums[i]; j--) {
+                dp[j] = Math.max(dp[j], dp[j- nums[i]]+nums[i]);
             }
         }
-
-        return dp[target] == 1 ? true : false;
+        return dp[target] == target;
     }
 }
 // @lc code=end
