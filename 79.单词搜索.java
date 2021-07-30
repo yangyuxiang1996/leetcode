@@ -7,6 +7,7 @@
 // @lc code=start
 class Solution {
     public boolean exist(char[][] board, String word) {
+        // 回溯
         boolean[][] visited = new boolean[board.length][board[0].length];
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
@@ -21,6 +22,7 @@ class Solution {
 
     int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
     public boolean backtrace(char[][] board, String word, int i, int j, int k, boolean[][] visited) {
+        // 终止条件
         if (board[i][j] != word.charAt(k)) {
             return false;
         }
@@ -29,6 +31,7 @@ class Solution {
         }
         visited[i][j] = true;
         // boolean result = false;
+        // 遍历选择
         for (int[] d: directions) {
             int new_i = i + d[0];
             int new_j = j + d[1];

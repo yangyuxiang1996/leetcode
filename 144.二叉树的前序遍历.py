@@ -4,8 +4,8 @@
 Description: 
 Author: yangyuxiang
 Date: 2021-05-27 08:26:45
-LastEditors: yangyuxiang
-LastEditTime: 2021-05-27 08:42:40
+LastEditors: Yuxiang Yang
+LastEditTime: 2021-07-30 11:17:21
 FilePath: /leetcode/144.二叉树的前序遍历.py
 '''
 
@@ -27,6 +27,29 @@ class TreeNode(object):
 
 class Solution(object):
     def preorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        算法：迭代
+        基本思想：
+        前序遍历顺序：中左右
+        先不断把左节点入栈，并保存，然后右节点入栈
+        """
+        if not root:
+            return []
+        stack = []
+        res = []
+        cur = root
+        while cur or stack:
+            while cur:
+                res.append(cur.val)
+                stack.append(cur)
+                cur = cur.left
+            cur = stack.pop()
+            cur = cur.right
+        return res
+    
+    def preorderTraversal2(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]

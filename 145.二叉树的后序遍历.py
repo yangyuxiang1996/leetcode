@@ -4,8 +4,8 @@
 Description: 
 Author: yangyuxiang
 Date: 2021-05-27 08:44:15
-LastEditors: yangyuxiang
-LastEditTime: 2021-05-27 08:57:16
+LastEditors: Yuxiang Yang
+LastEditTime: 2021-07-30 11:26:17
 FilePath: /leetcode/145.二叉树的后序遍历.py
 '''
 
@@ -33,7 +33,7 @@ class Solution(object):
             right -= 1
         return nums
 
-    def postorderTraversal(self, root):
+    def postorderTraversal2(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
@@ -78,6 +78,31 @@ class Solution(object):
             res.append(root.val)
 
         traverse(root, res)
+        return res
+
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        算法：迭代
+        后序遍历顺序：左右中
+        """
+        if not root:
+            return []
+        
+        stack = []
+        cur = root
+        res = []
+
+        while cur or stack:
+            while cur:
+                res.append(cur.val)
+                stack.append(cur)
+                cur = cur.right
+            cur = stack.pop()
+            cur = cur.left
+        res = self.reverse(res)
+        
         return res
 
 
