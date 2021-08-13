@@ -4,14 +4,14 @@
 Author: Yuxiang Yang
 Date: 2021-08-01 00:08:06
 LastEditors: Yuxiang Yang
-LastEditTime: 2021-08-02 08:47:32
+LastEditTime: 2021-08-10 19:00:20
 FilePath: /leetcode/0.快速排序.py
 Description: 
 '''
 def quickSort(nums, left, right):
     if left >= right:
         return
-    mid = partition(nums, left, right)
+    mid = partition0(nums, left, right)
     quickSort(nums, left, mid-1)
     quickSort(nums, mid+1, right)
     
@@ -24,26 +24,28 @@ def partition0(nums, left, right):
         while i < j and nums[i] <= pivot: # 从左往右找第一个比pivot大的
             i+=1
         # 交换
-        nums[i], nums[j] = nums[j], nums[i]
+        if i < j:
+            nums[i], nums[j] = nums[j], nums[i]
     # 此时nums[i]一定比pivot大
-    nums[i], nums[left] = nums[left], nums[i]
+    if i > left:
+        nums[i], nums[left] = nums[left], nums[i]
     return i
 
 def partition(nums, left, right):
-    pivot = nums[left]
+    pivot = nums[left]  # 以最左边元素作为轴心，最后以pivot作为分界，左边元素都小于等于pivot，右边元素都大于等pivot
     i, j = left, right
     while i < j:
-        while i < j and nums[j] >= pivot:
+        while i < j and nums[j] >= pivot: # 找第一个比pivot小的，放左边
             j-=1
         if i < j:
             nums[i] = nums[j]
-        while i < j and nums[i] <= pivot:
+        while i < j and nums[i] <= pivot: # 找第一个比pivot大的，放右边
             i+=1
         if i < j:
             nums[j] = nums[i]
         
-    nums[i] = pivot
-    return i
+    nums[i] = pivot  # mid位置放pivot
+    return i  # 返回mid位置
 
 
 def sort(nums):
