@@ -4,9 +4,9 @@
 Description: 
 Author: yangyuxiang
 Date: 2021-04-23 11:03:58
-LastEditors: yangyuxiang
-LastEditTime: 2021-04-23 11:47:33
-FilePath: /undefined/Users/mac/projects/leetcode/567.字符串的排列.py
+LastEditors: Yuxiang Yang
+LastEditTime: 2021-08-27 10:18:51
+FilePath: /leetcode/567.字符串的排列.py
 '''
 #
 # @lc app=leetcode.cn id=567 lang=python
@@ -45,9 +45,6 @@ class Solution(object):
                 if c in window and window[c] == needed[c]:
                     valid += 1
 
-            # while right - left >= len_s1:
-            #     if valid == len(needed):
-            #         return True
             while valid == len(needed):
                 if right - left == len_s1:
                     return True
