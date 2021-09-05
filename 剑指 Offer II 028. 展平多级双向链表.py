@@ -4,7 +4,7 @@
 Author: Yuxiang Yang
 Date: 2021-08-30 21:13:23
 LastEditors: Yuxiang Yang
-LastEditTime: 2021-08-30 21:41:21
+LastEditTime: 2021-08-31 10:09:12
 FilePath: /leetcode/剑指 Offer II 028. 展平多级双向链表.py
 Description: 
 多级双向链表中，除了指向下一个节点和前一个节点指针之外，它还有一个子链表指针，可能指向单独的双向链表。这些子列表也可能会有一个或多个自己的子项，依此类推，生成多级数据结构，如下面的示例所示。
@@ -43,11 +43,11 @@ class Solution(object):
             
             if cur.child:
                 stack.append(cur.child)
-                cur.child = None
+                cur.child = None  # 注意，要把当前节点的子节点置为空
             
             pre = cur
         
-        dummy.next.prev = None
+        dummy.next.prev = None  # head的prev要为空
         return dummy.next
 
 
